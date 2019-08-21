@@ -1,4 +1,4 @@
-package com.olshkol.sweater;
+package com.olshkol.sweater.controller;
 
 import com.olshkol.sweater.domain.Message;
 import com.olshkol.sweater.repository.MessageRepository;
@@ -12,25 +12,23 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-public class GreetingsController {
+public class MainController {
     @Autowired
     MessageRepository messageRepository;
 
-    @GetMapping("/greeting")
-    public String greeting(@RequestParam(value = "name", required = false, defaultValue = "World") String name,
-                            Map<String, Object> model){
-        model.put("name", name);
+    @GetMapping("/")
+    public String greeting(Map<String, Object> model){
         return "greeting";
     }
 
-    @GetMapping
+    @GetMapping("/main")
     public String main(Map<String, Object> model){
         Iterable<Message> messages = messageRepository.findAll();
         model.put("messages", messages);
         return "main";
     }
 
-    @PostMapping
+    @PostMapping("/main")
     public String add(@RequestParam String text, @RequestParam String tag, Map<String, Object> model){
         Message message = new Message(text, tag);
         messageRepository.save(message);
