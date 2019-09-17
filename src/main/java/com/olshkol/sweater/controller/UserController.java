@@ -3,6 +3,7 @@ package com.olshkol.sweater.controller;
 import com.olshkol.sweater.domain.Role;
 import com.olshkol.sweater.domain.User;
 import com.olshkol.sweater.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +20,7 @@ import java.util.stream.Collectors;
 public class UserController {
     private final UserRepository userRepository;
 
+    @Autowired
     public UserController(UserRepository userRepository) {
         this.userRepository = userRepository;
     }

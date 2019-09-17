@@ -3,6 +3,7 @@ package com.olshkol.sweater.controller;
 import com.olshkol.sweater.domain.Message;
 import com.olshkol.sweater.domain.User;
 import com.olshkol.sweater.repository.MessageRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -24,6 +25,7 @@ public class MainController {
     @Value("${upload.path}")
     private String uploadPath;
 
+    @Autowired
     public MainController(MessageRepository messageRepository) {
         this.messageRepository = messageRepository;
     }
